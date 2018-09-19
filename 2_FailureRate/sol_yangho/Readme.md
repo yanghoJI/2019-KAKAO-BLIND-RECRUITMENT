@@ -8,7 +8,7 @@
 
 - 만약 값이 0이면 zerolist에 index를 append 한다.
 
-- 값이 0보다 크면 실패율을 계산한다. 실패율 = 현재 값 / 누적 값    (index, 실패율) 튜플을 orderlist에 append 한다.
+- 값이 0보다 크면 실패율을 계산한다. 실패율 = 현재 값 / 누적 값   , (index, 실패율) 튜플을 orderlist에 append 한다.
 
 4. orderlist를 sort 한다.
 
