@@ -9,7 +9,7 @@ N = N1
 input = input1
 sol = sol1
 
-# conunt sort
+# count sort
 Clist = [0] * (N + 1)
 for v in input:
     Clist[v - 1] += 1
