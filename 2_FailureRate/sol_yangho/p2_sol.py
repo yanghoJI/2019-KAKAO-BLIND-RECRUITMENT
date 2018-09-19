@@ -1,11 +1,10 @@
+# set input data
 N1 = 5
 input1 = [2, 1, 2, 6, 2, 4, 3, 3]
 sol1 = [3,4,2,1,5]
-
 N2 = 4
 input2 = [4,4,4,4,4]
 sol2 = [4,1,2,3]
-
 N = N1
 input = input1
 sol = sol1
@@ -14,7 +13,6 @@ sol = sol1
 Clist = [0] * (N + 1)
 for v in input:
     Clist[v - 1] += 1
-#Clist = reversed(Clist)
 
 # calculate Clist
 zerolist = []
