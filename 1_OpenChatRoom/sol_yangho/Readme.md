@@ -10,6 +10,8 @@ input :
 
 iddict = {'uid1234' : 'Prodo', 'uid4567' : 'Ryan'}
 
+
+
 2. input list를 다시한번 돌면서 enter, leave를 처리한다. 이때 iddict에서 닉네임을 검색해서 사용한다.
 
 outstr = "{}님이 들어왔습니다.".format(iddict['uid1234']
