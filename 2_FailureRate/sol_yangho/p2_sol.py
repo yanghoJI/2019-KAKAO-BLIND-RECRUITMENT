@@ -1,13 +1,14 @@
 N1 = 5
 input1 = [2, 1, 2, 6, 2, 4, 3, 3]
-# sol1 = [3,4,2,1,5]
+sol1 = [3,4,2,1,5]
 
 N2 = 4
 input2 = [4,4,4,4,4]
-# sol2 = [4,1,2,3]
+sol2 = [4,1,2,3]
 
 N = N1
 input = input1
+sol = sol1
 
 # conunt sort
 Clist = [0] * (N + 1)
@@ -35,4 +36,4 @@ orderlist = sorted(orderlist, key= lambda x : x[1], reverse=True)
 
 # merge list
 solution = [x[0] for x in orderlist] + list(zerolist)
-print(solution)
+print('prediction : {}\nsol : {}'.format(solution, sol))
