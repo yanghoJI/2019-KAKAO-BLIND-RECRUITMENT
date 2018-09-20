@@ -45,12 +45,11 @@
 	
 입출력 예
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:--------------- | :----- |
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
-|  |         |    |
+| Relation  | Result  |
+| :------------ |:--------------- |
+| [[“100”,“ryan”,“music”,“2”],[“200”,“apeach”,“math”,“2”],[“300”,“tube”,“computer”,“3”],[“400”,“con”,“computer”,“4”],[“500”,“muzi”,“music”,“3”],[“600”,“apeach”,“music”,“2”]]      | 2|
+
+
 
 
 
