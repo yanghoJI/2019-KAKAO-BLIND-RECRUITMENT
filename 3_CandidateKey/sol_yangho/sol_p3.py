@@ -28,13 +28,15 @@ def checkF(table, colindex):
 # extract combinations and sol
 now_col = list(range(numOfCol))
 sol = []
+removeset = set()
 for i in range(1, numOfCol+ 1):
     combi = list(cb(now_col, i))
     for x in combi:
         if checkF(indata, x) is not None:
             sol.append(x)
-    for k in sol[-1]:
-        now_col.remove(k)
+            for k in x:
+                if k in now_col:
+                    now_col.remove(k)
     if i > len(now_col):
         break
 
