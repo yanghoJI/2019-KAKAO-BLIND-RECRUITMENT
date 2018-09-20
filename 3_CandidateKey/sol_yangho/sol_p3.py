@@ -1,5 +1,5 @@
 from itertools import combinations as cb
-import numpy as np
+
 
 # set input
 indata1 = [['100','ryan','music','2'],['200','apeach','math','2'],['300','tube','computer','3'],['400','con','computer','4'],['500','muzi','music','3'],['600','apeach','music','2']]
@@ -9,7 +9,6 @@ result2 = 3
 indata = indata1
 result = result1
 numOfCol = len(indata[0])
-indata = np.array(indata)
 
 # make checkF
 def checkF(table, colindex):
