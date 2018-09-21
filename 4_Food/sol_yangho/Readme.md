@@ -1,12 +1,13 @@
 ## solution by yanghoJI 
 
-#### algorithm complexity O(n)
+#### algorithm complexity O(nlogn)
 
 1. food_times 의 전체 합을 totalTime 으로 저장한다.
 </br>
 2. food_times에 음식 번호 인덱스를 붙이고 오름차순으로 정렬한다. 
 
  - ex [(foodIndex, time), ...]
+ 
 </br>
 
 3. 밑과 같이 음식 하니씩을 제외해나간다.

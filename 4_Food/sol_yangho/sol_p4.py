@@ -1,5 +1,5 @@
 import timeit
-# algorithm complexity O(n)
+# algorithm complexity O(nlogn)
 # set input
 indata1 = [3, 1, 2]
 k1 = 5
