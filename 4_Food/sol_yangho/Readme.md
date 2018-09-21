@@ -12,8 +12,8 @@
 3. 밑과 같이 음식 하니씩을 제외해나간다.
 
 ~~~
-for info in food_times
-   runtime = time * len(남은 음식)
+    for info in foodTimes:
+        runtime = 남은음식개수 * (현재음식남은시간 - 전체음식먹은루프개수)
 ~~~
 
 </br>
