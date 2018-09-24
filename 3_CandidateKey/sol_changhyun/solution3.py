@@ -30,8 +30,8 @@ def solution(relation):
         else :
             surplus.append(x)
         ind += 1
-    print(onlyarr)
-    print(surplus)
+    #print(onlyarr)
+    #print(surplus)
 
 
     #두 개 이상의 후보키 구하기
@@ -48,7 +48,7 @@ def solution(relation):
                 for i in range(len(surplus[0])):
                     newList = surplus[int(x[0])-1][i] + surplus[int(x[1])-1][i]
                     newset.add(newList)
-                print(newset)
+                #print(newset)
                 if len(newset) == N:
                     answer += 1
                     onlyarr.append(ind)
@@ -63,22 +63,22 @@ def dfs(ind, string):
     ncr.append(dfs(ind - 1, string + newstring))
     ncr.append(dfs(ind - 1, string))
 
-relation = [["100","1","ryan","music","2"],
-            ["200","2","apeach","math","2"],
-            ["300","3","tube","computer","3"],
-            ["400","4","con","computer","4"],
-            ["500","5","muzi","music","3"],
-            ["600","6","apeach","music","2"]]
+#relation = [["100","1","ryan","music","2"],
+#            ["200","2","apeach","math","2"],
+#            ["300","3","tube","computer","3"],
+#            ["400","4","con","computer","4"],
+#            ["500","5","muzi","music","3"],
+#            ["600","6","apeach","music","2"]]
 
 #result = 2
 
-#relation = [['100','ryan','music','2'],
-#            ['200','apeach','math','1'],
-#            ['300','tube','computer','1'],
-#            ['400','con','computer','4'],
-#            ['500','muzi','music','3'],
-#            ['600','apeach','music','2']]
+relation = [['100','ryan','music','2'],
+            ['200','apeach','math','1'],
+            ['300','tube','computer','1'],
+            ['400','con','computer','4'],
+            ['500','muzi','music','3'],
+            ['600','apeach','music','2']]
 
-#result = 3
+#result = 4
 
 print(solution(relation))
