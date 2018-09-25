@@ -6,9 +6,10 @@
 
 1. body 부분을 참조하여 기본점수 baseScore 를 해당 url1의 score에 더한다.
 
-2. 링크를 한 곳에 줄 링크 점수를 계산하고 이것을 해당 url2의 score에 더한다. 
+2. 링크를 한 곳에 줄 링크 점수를 계산하여 outScore에 저장해 놓는다. 
     
     outScore = baseScore / numOflink 
-    
 
-3. scoreList score 기준으로 정렬한다.
+3. 각각의 html parser class를 돌면서 outScore를 나눠준다.
+
+4. scoreList score 기준으로 정렬한다.
