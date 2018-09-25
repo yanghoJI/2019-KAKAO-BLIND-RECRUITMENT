@@ -6,8 +6,8 @@ result1 = [[7,4,6,9,1,8,5,2,3],[9,6,5,8,1,4,3,2,7]]
 indata2 = [[6,10], [1,9], [3,8], [2,7], [4,7], [5,1], [8,9]]
 result2 = [[1, 2, 3, 4, 5, 6, 7], [4, 6, 5, 3, 2, 7, 1]]
 
-indata = indata2
-result = result2
+indata = indata1
+result = result1
 
 # make nodeList
 nodeList = [indata[i] + [i+1] for i in range(len(indata))]
@@ -46,9 +46,7 @@ def preorder(root, orderList):
     # priority root --> left --> right
     if root != None:
         orderList.append(root.number)
-    if root.L != None:
         preorder(root.L, orderList)
-    if root.R != None:
         preorder(root.R, orderList)
 
 preorderList = []
@@ -56,11 +54,9 @@ preorder(root, preorderList)
 
 def postorder(root, orderList):
     # priority left --> right --> root
-    if root.L != None:
-        postorder(root.L, orderList)
-    if root.R != None:
-        postorder(root.R, orderList)
     if root != None:
+        postorder(root.L, orderList)
+        postorder(root.R, orderList)
         orderList.append(root.number)
 
 postorderList = []
