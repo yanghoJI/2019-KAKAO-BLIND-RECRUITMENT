@@ -10,6 +10,6 @@
     
     outScore = baseScore / numOflink 
 
-3. 각각의 html parser class를 돌면서 outScore를 나눠준다.
+- 각각의 html parser class를 돌면서 outScore를 나눠준다.
 
-4. scoreList score 기준으로 정렬한다.
+- scoreList score 기준으로 정렬한다.
