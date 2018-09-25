@@ -1,0 +1,23 @@
+input = ['Enter uid1234 Muzi', 'Enter uid4567 Prodo','Leave uid1234','Enter uid1234 Prodo','Change uid4567 Ryan']
+
+########## Dictionary [USER_ID : ID] ##########
+USERDict = {}
+for info in input:
+    info = info.split(' ') # 띄어쓰기를 기준으로 문자열 자른다.
+    Order = info[0] # 첫번째 Info는 명령이다.
+    if Order in ('Enter', 'Change'): # Enter와 Change일 때는 USER_ID와 ID를 최신화_매칭시킨다.
+        USERDict[info[1]] = info[2]
+    else : pass
+
+########### Solution 관리자가 볼 수 있는 내역으로 생성 ##########
+solution = []
+for info in input:
+    info = info.split(' ') # 띄어쓰기를 기준으로 문자열 자른다.
+    Order = info[0] # 첫번째 Info는 명령이다.
+    if Order == 'Enter': # Enter일 때 메세지 생성
+        print("{}님이 들어왔습니다.".format(USERDict[info[1]]))
+    elif Order == 'Leave': # Leave일 때 메세지 생성
+        print("{}님이 나갔습니다.".format(USERDict[info[1]]))
+    else : pass
+
+print(solution)
