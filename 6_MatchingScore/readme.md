@@ -18,7 +18,7 @@
 예를 들어, 다음과 같이 A, B, C 세 개의 웹페이지가 있고, 검색어가 hi라고 하자.
 
 <p align="center">
-	<img src="../image/6_1.png" width="70%">
+	<img src="../image/6_1.jpg" width="50%">
 </p>
 </br>
 
