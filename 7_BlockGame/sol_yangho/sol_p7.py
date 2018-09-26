@@ -1,66 +1,154 @@
-import timeit
-# algorithm complexity O(nlogn)
+# show board
+def showboard(board):
+    b = '#' * len(board[0])
+    print(b)
+    for r in board:
+        print(*r)
+    print(b)
+
 # set input
-indata1 = [3, 1, 2]
-k1 = 5
-result1 = 1
+indata1 = [[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,4,0,0,0],
+[0,0,0,0,0,4,4,0,0,0],
+[0,0,0,0,3,0,4,0,0,0],
+[0,0,0,2,3,0,0,0,5,5],
+[1,2,2,2,3,3,0,0,0,5],
+[1,1,1,0,0,0,0,0,0,5]]
+result1 = 2
 
-indata2 = [3, 1, 2]
-k2 = 10
-result2 = -1
+indata2 = [[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,4,0,0,0],
+[0,0,0,0,0,4,4,0,0,0],
+[0,0,0,2,3,0,4,0,0,0],
+[0,2,2,2,3,0,0,0,5,5],
+[1,0,0,0,3,3,0,0,0,5],
+[1,1,1,0,0,0,0,0,0,5]]
+result2 = 2
 
-indata3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-k3 = 10
-result3 = 2
+indata3 = [[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,4,0,0,0],
+[0,0,0,0,0,4,4,4,0,0],
+[0,0,0,2,3,0,0,0,0,0],
+[0,2,2,2,3,0,0,0,5,5],
+[1,0,0,0,3,3,6,0,0,5],
+[1,1,1,0,0,6,6,6,0,5]]
+result3 = 5
 
-indata4 = [1, 2, 3]
-k4 = sum(indata4) - 1
+indata4 = [[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[7,7,7,0,0,0,4,0,0,0],
+[0,7,0,0,0,4,4,4,0,0],
+[0,0,0,2,3,0,0,0,0,0],
+[0,2,2,2,3,0,0,0,5,5],
+[1,0,0,0,3,3,6,0,0,5],
+[1,1,1,0,0,6,6,6,0,5]]
 result4 = 3
 
-indata5 = list(range(1,200001))
-k5 = sum(indata5) - 1
-result5 = 200000
+indata = indata4
+result = result4
+showboard(indata)
 
-start = timeit.default_timer()
-indata = indata5
-k = k5
-result = result5
 
-# make and sort foodTimes
-Foods = list(range(1,len(indata)+1))
-foodTimes = zip(Foods, indata)
-foodTimes = sorted(foodTimes, key= lambda x : x[1])
-totalTime = sum(indata)
+# define board size
+rowNum = len(indata)
+colNum = len(indata[0])
 
-# make simulation function
-def simul(indata, foodTimes, k):
-    resTime = k
-    loofNum = 0
-    curlen = len(indata)
-    poplist = set()
-    for info in foodTimes:
-        runtime = curlen * (info[1] - loofNum)
-        if runtime <= resTime:
-            resTime -= runtime
-            poplist.add(info[0])
-            curlen -= 1
-            loofNum += info[1] - loofNum
-        else:
-            solIndex = resTime % curlen
-            break
-    return (solIndex, poplist)
+
+# define block class
+class Block:
+    def __init__(self, blockNumber):
+        self.blockNumber = blockNumber
+        self.rmBlock = set()
+        self.block = set()
+        self.offset = [51, 51]
+        self.removable = False
+
+    def addcoodi(self, coordi):
+        if coordi[0] < self.offset[0]:
+            self.offset[0] = coordi[0]
+        if coordi[1] < self.offset[1]:
+            self.offset[1] = coordi[1]
+        self.block.add(coordi)
+
+    def getinfo(self):
+        # remove offset
+        cleanBlock = set([(coordi[0] - self.offset[0], coordi[1] - self.offset[1]) for coordi in self.block])
+
+        # define Removable block coordi set
+        b1 = set([(0,0), (1,0), (1,1), (1,2)])
+        rm1 = set([(0,1), (0,2)])
+        b2 = set([(2,0), (2,1), (1,1), (0,1)])
+        rm2 = set([(0, 0), (1, 0)])
+        b3 = set([(0, 0), (1, 0), (2, 0), (2, 1)])
+        rm3 = set([(0, 1), (1, 1)])
+        b4 = set([(1, 0), (1, 1), (1, 2), (0, 2)])
+        rm4 = set([(0, 0), (0, 1)])
+        b5 = set([(1, 0), (1, 1), (1, 2), (0, 1)])
+        rm5 = set([(0, 0), (0, 2)])
+        rmBlist = [b1, b2, b3, b4, b5]
+        rm = [rm1, rm2, rm3, rm4, rm5]
+
+        # get block info
+        for i, b in enumerate(rmBlist):
+            if cleanBlock == b:
+                self.removable = True
+                self.rmBlock = set([(coordi[0] + self.offset[0], coordi[1] + self.offset[1]) for coordi in rm[i]])
+                break
+
+
+# generate block class
+poList = [rowNum] * colNum
+blockDict = {}
+for row in range(rowNum):
+    for col in range(colNum):
+        v = indata[row][col]
+        if v != 0:
+            if v in blockDict:
+                blockDict[v].addcoodi((row, col))
+            else:
+                blockDict[v] = Block(v)
+                blockDict[v].addcoodi((row, col))
+
+            if row < poList[col]:
+                poList[col] = row
+for b in blockDict:
+    blockDict[b].getinfo()
 
 # sol
-if k >= totalTime:
-    sol = -1
-else:
-    solIndex, poplist = simul(indata, foodTimes, k)
-    resFoods = []
-    for food in Foods:
-        if food in poplist:
-            pass
-        else:
-            resFoods.append(food)
-    sol = resFoods[solIndex]
-end = timeit.default_timer()
-print('prediction : {}\t\tsolution : {}\t\trun time {:.6f} sec'.format(sol, result, end - start))
+rmCount = 0
+for row in range(rowNum):
+    for col in range(colNum):
+        v = indata[row][col]
+        if v != 0:
+            targetB = blockDict[v]
+            if targetB.removable:
+                flag = True
+                for coor in targetB.rmBlock:
+                    if coor[0] >= poList[coor[1]]:
+                        flag = False
+                        break
+                if flag == True:
+                    rmCount += 1
+                    blockDict.pop(v)
+                    for coor in targetB.block:
+                        temp = coor[0] + 1
+                        indata[coor[0]][coor[1]] = 0
+                        for i in range(temp, rowNum):
+                            if indata[i][coor[1]] == 0:
+                                temp += 1
+                        poList[coor[1]] = temp
+                    #print(poList)
+
+showboard(indata)
+print('prediction : {}\t\tsolution : {}'.format(rmCount, result))
