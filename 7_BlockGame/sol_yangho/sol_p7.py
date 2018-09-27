@@ -55,8 +55,20 @@ indata4 = [[0,0,0,0,0,0,0,0,0,0],
 [1,1,1,0,0,6,6,6,0,5]]
 result4 = 3
 
-indata = indata4
-result = result4
+indata5 = [[0,0,0,0,0,0,0,0,0,0],
+[0,4,0,0,0,0,0,0,0,0],
+[0,4,4,4,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,3,3,3,0,0,0,0],
+[0,0,0,0,3,0,0,0,0,0],
+[0,0,0,2,0,6,0,0,5,5],
+[1,2,2,2,0,6,6,6,0,5],
+[1,1,1,0,0,0,0,0,0,5]]
+result5 = 4
+
+indata = indata1
+result = result1
 showboard(indata)
 
 
@@ -142,12 +154,15 @@ for row in range(rowNum):
                     rmCount += 1
                     blockDict.pop(v)
                     for coor in targetB.block:
-                        temp = coor[0] + 1
                         indata[coor[0]][coor[1]] = 0
-                        for i in range(temp, rowNum):
-                            if indata[i][coor[1]] == 0:
-                                temp += 1
-                        poList[coor[1]] = temp
+                        if coor[0] <= poList[coor[1]]:
+                            temp = coor[0] + 1
+                            for i in range(temp, rowNum):
+                                if indata[i][coor[1]] == 0:
+                                    temp += 1
+                                else:
+                                    break
+                            poList[coor[1]] = temp
                     #print(poList)
 
 showboard(indata)
