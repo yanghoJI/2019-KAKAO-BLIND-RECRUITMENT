@@ -28,14 +28,29 @@ def checkF(table, colindex):
 now_col = list(range(numOfCol))
 sol = []
 removeset = set()
-for i in range(1, numOfCol+ 1):
+
+combi = list(cb(now_col, 1))
+for x in combi:
+    if checkF(indata, x) is not None:
+        sol.append(x)
+        for k in x:
+            if k in now_col:
+                now_col.remove(k)
+
+for i in range(2, numOfCol+ 1):
     combi = list(cb(now_col, i))
     for x in combi:
-        if checkF(indata, x) is not None:
+        flag = True
+        for ckey in sol:
+            if set(ckey) & set(x) == set(ckey):
+                flag = False
+                break
+        if (checkF(indata, x) is not None) and (flag == True):
             sol.append(x)
-            for k in x:
-                if k in now_col:
-                    now_col.remove(k)
+            if i == 1:
+                for k in x:
+                    if k in now_col:
+                        now_col.remove(k)
     if i > len(now_col):
         break
 
