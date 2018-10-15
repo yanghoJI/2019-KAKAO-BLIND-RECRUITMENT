@@ -67,8 +67,8 @@ indata5 = [[0,0,0,0,0,0,0,0,0,0],
 [1,1,1,0,0,0,0,0,0,5]]
 result5 = 4
 
-indata = indata1
-result = result1
+indata = indata5
+result = result5
 showboard(indata)
 
 
